@@ -20,8 +20,8 @@ public class UserController {
     @PostMapping("/confirm-and-register")
     public String confirmAndRegister(@RequestBody UserDetails userDetails)
     {
-        String confirm = registrationServiceClient.someDetails(userDetails)
-        String response = confirm + " " + acknowledgeService.askMessage(userDetails)
+        String confirm = registrationServiceClient.someDetails(userDetails);
+        String response = confirm + " " + acknowledgeService.askMessage(userDetails);
                 return response;
     }
 }
