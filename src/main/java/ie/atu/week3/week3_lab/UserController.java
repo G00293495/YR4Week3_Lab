@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class UserController {
-    private RegistrationServiceClient registrationServiceClient;
+    private final RegistrationServiceClient registrationServiceClient;
     private final AcknowledgeService acknowledgeService;
 
     @Autowired
@@ -17,11 +17,11 @@ public class UserController {
         this.registrationServiceClient = registrationServiceClient;
     }
 
-    @PostMapping("/confirm-and-register")
+    @PostMapping("/confirm")
     public String confirmAndRegister(@RequestBody UserDetails userDetails)
     {
         String confirm = registrationServiceClient.someDetails(userDetails);
-        String response = confirm + " " + acknowledgeService.askMessage(userDetails);
+        String response = confirm + " " + acknowledgeService.ackMessage(userDetails);
                 return response;
     }
 }
